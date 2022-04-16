@@ -7,13 +7,12 @@ import postRoutes from './routes/posts.js';
 
 // initialize express application app
 const app = express();
+app.use(cors());
 app.use('/posts', postRoutes);
 
 // setting up body parser for sending requests
 app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
-
-app.use(cors());
 
 const CONNECTION_URL = 'mongodb+srv://mernstack123:mernstack123@cluster0.ovnng.mongodb.net/memories_app?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
